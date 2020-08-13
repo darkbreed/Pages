@@ -65,11 +65,14 @@ struct PageViewController: UIViewControllerRepresentable {
         let previousPage = context.coordinator.parent.currentPage
         context.coordinator.parent = self
 
-        pageViewController.setViewControllers(
-            [controllers[currentPage]],
-            direction: currentPage - previousPage > 0 ? .forward : .reverse,
-            animated: false
-        )
+        if controllers.count > 0 {
+            pageViewController.setViewControllers(
+                [controllers[currentPage]],
+                direction: currentPage - previousPage > 0 ? .forward : .reverse,
+                animated: false
+            )
+        }
+    
     }
 
 }
